@@ -2,12 +2,10 @@
 //  student.cpp
 //  C867Assessment
 //
-//  Created by Drew Brokamp on 1/12/21.
+//  Created by Drew Brokamp on 1/14/21.
 //
 
-#include "student.hpp"
-
-using namespace std;
+#include "student.h"
 
 Student::Student() {
     studentID = "";
@@ -117,13 +115,7 @@ void Student::PrintStudentInfo(StudentInfo info) {
             }
         default:
             break;
-            
+
     }
 }
-
-
-
-
-
-
 
