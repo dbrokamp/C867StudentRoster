@@ -119,3 +119,19 @@ void Student::PrintStudentInfo(StudentInfo info) {
     }
 }
 
+void Student::DegreeProgramPrint(DegreeProgram program) {
+    switch (program) {
+        case SECURITY:
+            cout << "Security";
+            break;
+        case NETWORK:
+            cout << "Network";
+            break;
+        case SOFTWARE:
+            cout<< "Software";
+            break;
+        default:
+            break;
+    }
+};
+

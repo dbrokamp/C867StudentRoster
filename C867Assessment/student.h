@@ -5,11 +5,12 @@
 //  Created by Drew Brokamp on 1/14/21.
 //
 
-#include "degree.h"
-#include <array>
-
 #ifndef student_h
 #define student_h
+
+#include "degree.h"
+#include <array>
+using namespace std;
 
 class Student {
 public:
@@ -26,6 +27,7 @@ public:
         int getStudentAge();
         array<int,3> getDaysToCompleteCourses();
         DegreeProgram getDegreeProgram();
+        void DegreeProgramPrint(DegreeProgram program);
         Student();
         Student(string id, string sFirstName, string sLastName, string sEmailAddress, int sAge, array<int,3> daysToComplete, DegreeProgram degree);
         void PrintStudentInfo(StudentInfo info);
