@@ -6,25 +6,40 @@
 //
 
 #include "student.h"
+#include <sstream>
+#include <iomanip>
 
 Student::Student() {
-    studentID = "";
-    firstName = "";
-    lastName = "";
-    emailAddress = "";
-    studentAge = 0;
-    daysToCompleteCourses = {0, 0, 0};
+    
 }
 
-Student::Student(string id, string sFirstName, string sLastName, string sEmailAddress, int sAge, array<int,3> toComplete, DegreeProgram degree) {
-    studentID = id;
-    firstName = sFirstName;
-    lastName = sLastName;
-    emailAddress = sEmailAddress;
-    studentAge = sAge;
-    daysToCompleteCourses = toComplete;
-    studentDegree = degree;
+// Constructor
+Student::Student(string studentInfo) {
+    stringstream studentString(studentInfo);
+    array<string,9> newStudentInfo;
+    vector<int> days;
+ 
+    while(studentString.good()) {
+        for (int i = 0; i < 9; i++) {
+            getline(studentString, newStudentInfo[i], ',');
+        }
+    }
+    
+    setStudentID(newStudentInfo[0]);
+    setStudentFirstName(newStudentInfo[1]);
+    setStudentLastName(newStudentInfo[2]);
+    setStudentEmailAddress(newStudentInfo[3]);
+    setStudentAge(stoi(newStudentInfo[4]));
+    days.push_back(stoi(newStudentInfo[5]));
+    days.push_back(stoi(newStudentInfo[6]));
+    days.push_back(stoi(newStudentInfo[7]));
+    setDaysInCourses(days);
+    setStudentDegreeProgram(newStudentInfo[8]);
+    
+
 }
+
+// Setters
 
 void Student::setStudentID(string newStudentID) {
     studentID = newStudentID;
@@ -46,14 +61,21 @@ void Student::setStudentAge(int newAge) {
     studentAge = newAge;
 }
 
-void Student::setStudentDegreeProgram(DegreeProgram program) {
-    studentDegree = program;
+void Student::setDaysInCourses(vector<int> days) {
+    daysInCourses = days;
 }
 
-void Student::setDaysToCompleteCourses(array<int,3> daysToComplete) {
-    daysToCompleteCourses = daysToComplete;
+void Student::setStudentDegreeProgram(string program) {
+    if (program == "SECURITY") {
+        studentDegree = SECURITY;
+    } else if (program == "NETWORK") {
+        studentDegree = NETWORK;
+    } else if (program == "SOFTWARE") {
+        studentDegree = SOFTWARE;
+    }
 }
 
+// Getters
 string Student::getStudentID() {
     return studentID;
 }
@@ -66,12 +88,16 @@ string Student::getStudentLastName() {
     return lastName;
 }
 
+string Student::getStudentEmailAddress() {
+    return emailAddress;
+}
+
 int Student::getStudentAge() {
     return studentAge;
 }
 
-array<int,3> Student::getDaysToCompleteCourses() {
-    return daysToCompleteCourses;
+vector<int> Student::getDaysInCourses() {
+    return daysInCourses;
 }
 
 DegreeProgram Student::getDegreeProgram() {
@@ -81,57 +107,66 @@ DegreeProgram Student::getDegreeProgram() {
 void Student::PrintStudentInfo(StudentInfo info) {
     switch (info) {
         case STUDENTID:
-            cout << studentID << endl;
+            cout << getStudentID() << endl;
             break;
         case FIRSTNAME:
-            cout << firstName << endl;
+            cout << getStudentFirstName() << endl;
             break;
         case LASTNAME:
-            cout << lastName << endl;
+            cout << getStudentLastName() << endl;
             break;
         case EMAIL:
-            cout << emailAddress << endl;
+            cout << getStudentEmailAddress() << endl;
             break;
         case AGE:
-            cout << studentAge << endl;
+            cout << getStudentAge() << endl;
             break;
         case DEGREE:
-            cout << studentDegree << endl;
+            cout << DegreeProgramPrint(getDegreeProgram()) << endl;
             break;
         case DAYSTOCOMPLETECOURSES:
-            for (int i = 0; i < daysToCompleteCourses.size(); i++) {
-                cout << daysToCompleteCourses[i] << " ";
+            for (int i = 0; i < daysInCourses.size(); i ++) {
+                cout << "{" << daysInCourses.at(i) << ", ";
+                cout << "}" << endl;
             }
-            cout << endl;
         case ALL:
-            cout << "Student ID: " << studentID << endl;
-            cout << "Name: " << firstName << " " << lastName << endl;
-            cout << "Email: " << emailAddress << endl;
-            cout << "Age: " << studentAge << endl;
-            cout << "Degree Program: " << studentDegree << endl;
-            cout << "Days to complete 3 classes: ";
-            for (int i = 0; i < daysToCompleteCourses.size(); i++) {
-                cout << daysToCompleteCourses[i] << " ";
+            cout << "Student ID: " << getStudentID() << setw(10);
+            cout << "Name: " << getStudentFirstName() << " " << getStudentLastName() << setw(20);
+            cout << "Email: " << getStudentEmailAddress() << setw(20);
+            cout << "Age: " << getStudentAge() << setw(30);
+            cout << "Days In Courses: {";
+            for (int i = 0; i < daysInCourses.size(); i ++) {
+                if (i == daysInCourses.size() - 1) {
+                    cout << daysInCourses.at(i);
+                } else {
+                    cout << daysInCourses.at(i) << ", ";
+                }
+    
             }
+            cout << "}" << setw(30);
+            cout << "Degree Program: " << DegreeProgramPrint(getDegreeProgram()) << setw(10);
+            cout << endl;
         default:
             break;
 
     }
 }
 
-void Student::DegreeProgramPrint(DegreeProgram program) {
+string Student::DegreeProgramPrint(DegreeProgram program) {
+    string printProgram;
     switch (program) {
         case SECURITY:
-            cout << "Security";
+            printProgram = "Security";
             break;
         case NETWORK:
-            cout << "Network";
+            printProgram = "Network";
             break;
         case SOFTWARE:
-            cout<< "Software";
+            printProgram = "Software";
             break;
         default:
             break;
     }
-};
+    return printProgram;
+}
 

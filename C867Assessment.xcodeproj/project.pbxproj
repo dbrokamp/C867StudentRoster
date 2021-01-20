@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6646393025AE00C5003763B5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6646392F25AE00C5003763B5 /* main.cpp */; };
+		667F828425B3956A001E30A3 /* roster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 667F828325B3956A001E30A3 /* roster.cpp */; };
 		66E1BD1625B0E503004E6C17 /* student.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66E1BD1525B0E503004E6C17 /* student.cpp */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		6646392C25AE00C5003763B5 /* C867Assessment */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = C867Assessment; sourceTree = BUILT_PRODUCTS_DIR; };
 		6646392F25AE00C5003763B5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6646393F25AE0145003763B5 /* degree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = degree.h; sourceTree = "<group>"; };
+		667F828225B39558001E30A3 /* roster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = roster.h; sourceTree = "<group>"; };
+		667F828325B3956A001E30A3 /* roster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = roster.cpp; sourceTree = "<group>"; };
 		66E1BD0F25B0E405004E6C17 /* student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student.h; sourceTree = "<group>"; };
 		66E1BD1525B0E503004E6C17 /* student.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = student.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +66,9 @@
 			children = (
 				6646393F25AE0145003763B5 /* degree.h */,
 				66E1BD0F25B0E405004E6C17 /* student.h */,
+				667F828225B39558001E30A3 /* roster.h */,
 				66E1BD1525B0E503004E6C17 /* student.cpp */,
+				667F828325B3956A001E30A3 /* roster.cpp */,
 				6646392F25AE00C5003763B5 /* main.cpp */,
 			);
 			path = C867Assessment;
@@ -126,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6646393025AE00C5003763B5 /* main.cpp in Sources */,
+				667F828425B3956A001E30A3 /* roster.cpp in Sources */,
 				66E1BD1625B0E503004E6C17 /* student.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
